@@ -1,7 +1,8 @@
-package com.example.mapreducedemo.week2;
+package week2;
 
 
 import org.apache.hadoop.io.Writable;
+
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -56,6 +57,13 @@ public class PhoneTraffic implements Writable {
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
+        this.up = dataInput.readLong();
+        this.down = dataInput.readLong();
+        this.sum = dataInput.readLong();
+    }
 
+    @Override
+    public String toString() {
+        return up + "     " + down +  "     " + sum;
     }
 }
