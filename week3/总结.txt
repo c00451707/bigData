@@ -1,0 +1,16 @@
+Hbase 的命名空间相当于Mysql的库。
+默认的命名空间为： default
+
+HBase（HBase shell 进入）：
+创建命名空间：create_namespace 'huster_chenbin_test'
+查询命名空间：list_namespace
+列出表：list
+创建表：create 'huster_chenbin_test:${tableName}', '${colFamily}'
+描述表：describe 'huster_chenbin_test:${tableName}'
+插入数据：put 'huster_chenbin_test:${tableName}', '${rowKey}', '${colFamily}:${colName}', '${colValue}'
+获取数据：get 'huster_chenbin_test:${tableName}', '${rowKey}'
+扫描表：scan 'huster_chenbin_test:${tableName}'
+统计总数：count 'huster_chenbin_test:${tableName}'
+删除数据：delete 'huster_chenbin_test:${tableName}', '${rowKey}', '${colFamily}:${colName}'
+禁止表：disable 'huster_chenbin_test:${tableName}'
+删除表：drop 'huster_chenbin_test:${tableName}'
