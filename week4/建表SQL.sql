@@ -133,8 +133,46 @@ Time taken: 0.1 seconds, Fetched: 10 row(s)
 
 截止目前，建表语句都可以OK，下面就是写SQL了。
 
+CREATE EXTERNAL TABLE IF NOT EXISTS t_movie (
+    movie_id VARCHAR(256) COMMENT '电影ID',
+    movie_name string COMMENT '电影名',
+    movie_type VARCHAR(256) COMMENT '电影类型'
+)
+COMMENT '电影表'
+CLUSTERED BY (movie_id) INTO 7 BUCKETS 
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe' 
+WITH SERDEPROPERTIES ( 
+  'field.delim'='::')
+STORED AS TEXTFILE
+LOCATION '/data/hive/movies';
+
+select * from t_movie limit 10;;
+OK
+1	Toy Story (1995)	Animation|Children's|Comedy
+2	Jumanji (1995)	Adventure|Children's|Fantasy
+3	Grumpier Old Men (1995)	Comedy|Romance
+4	Waiting to Exhale (1995)	Comedy|Drama
+5	Father of the Bride Part II (1995)	Comedy
+6	Heat (1995)	Action|Crime|Thriller
+7	Sabrina (1995)	Comedy|Romance
+8	Tom and Huck (1995)	Adventure|Children's
+9	Sudden Death (1995)	Action
+10	GoldenEye (1995)	Action|Adventure|Thriller
+Time taken: 0.104 seconds, Fetched: 10 row(s);
 
 
-
-
-
+CREATE EXTERNAL TABLE IF NOT EXISTS t_rating (
+    user_id VARCHAR(256) COMMENT '用户 ID',
+    movie_id VARCHAR(256) COMMENT '电影 ID',
+    rate int COMMENT '评分',
+    times bigint COMMENT '评分时间'
+)
+COMMENT '影评表'
+CLUSTERED BY (user_id) INTO 7 BUCKETS 
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe' 
+WITH SERDEPROPERTIES ( 
+  'field.delim'='::')
+STORED AS TEXTFILE
+LOCATION '/data/hive/ratings';
