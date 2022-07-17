@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="customLauncherPath" value="/opt/homebrew/Cellar/sbt/1.5.5/libexec/bin/sbt-launch.jar" />
+    <option name="customVMPath" />
+    <option name="vmParameters" value="-Dsbt.override.build.repos=true -Dsbt.repository.config=~/.sbt/repositories" />
+  </component>
+</project>
